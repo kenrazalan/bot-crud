@@ -1,5 +1,7 @@
 # Bot App
 
+Simple Bots(CRUD) persisting to localStorage
+
 ## Features
 
 1. Create Bot Read(View)
