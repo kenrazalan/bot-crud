@@ -10,9 +10,9 @@ function AddBot() {
   const { bots, setBots } = useContext(BotsContext);
   const navigate = useNavigate();
   const handleOnSubmit = (bot: Bot) => {
+    console.log(bot, "botbot");
     bot.id = uuidv4();
-    const randomAvatar = getRandomBotName();
-    bot.src = `https://api.dicebear.com/5.x/bottts/svg?seed=${randomAvatar}`;
+
     if (bots) {
       setBots([bot, ...bots]);
       navigate("/");

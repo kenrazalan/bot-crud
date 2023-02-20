@@ -8,8 +8,8 @@ import {
   Image,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { HEADER_HEIGHT, useStyles } from "./styles";
 
 interface HeaderResponsiveProps {
@@ -19,6 +19,12 @@ export function HeaderComponent({ links }: HeaderResponsiveProps) {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setActive(pathname);
+  }, [pathname]);
 
   const items = links.map((link) => (
     <Link
@@ -27,10 +33,6 @@ export function HeaderComponent({ links }: HeaderResponsiveProps) {
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
       })}
-      onClick={() => {
-        setActive(link.link);
-        close();
-      }}
     >
       {link.label}
     </Link>
@@ -43,6 +45,7 @@ export function HeaderComponent({ links }: HeaderResponsiveProps) {
           alt={"bots-logo"}
           height={50}
           width={50}
+          onClick={() => navigate("/")}
         />
         <Group spacing={5} className={classes.links}>
           {items}
