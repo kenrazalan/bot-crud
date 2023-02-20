@@ -1,6 +1,3 @@
-import React from "react";
-import logo from "./logo.svg";
-
 import {
   BrowserRouter,
   Routes,
@@ -11,18 +8,11 @@ import {
 import BotList from "./components/BotList";
 import { MantineProvider } from "@mantine/core";
 import { HeaderComponent } from "./components/Header/Header";
+import useLocalStorage from "./hooks/useLocalStorage";
+import { links } from "./components/Header/styles";
 
 function App() {
-  const links = [
-    {
-      link: "/",
-      label: "Bot List",
-    },
-    {
-      link: "/add",
-      label: "Add Bot",
-    },
-  ];
+  const [bots, setBots] = useLocalStorage("bots", []);
 
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
