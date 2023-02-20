@@ -9,6 +9,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { HEADER_HEIGHT, useStyles } from "./styles";
 
 interface HeaderResponsiveProps {
@@ -20,20 +21,19 @@ export function HeaderComponent({ links }: HeaderResponsiveProps) {
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <a
+    <Link
       key={link.label}
-      href={link.link}
+      to={link.link}
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
       })}
-      onClick={(event) => {
-        event.preventDefault();
+      onClick={() => {
         setActive(link.link);
         close();
       }}
     >
       {link.label}
-    </a>
+    </Link>
   ));
   return (
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>

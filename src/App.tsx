@@ -5,6 +5,7 @@ import { HeaderComponent } from "./components/Header/Header";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { links } from "./components/Header/styles";
 import BotsContext from "./context/BotsContext";
+import AddBot from "./components/AddBot";
 
 function App() {
   const [bots, setBots] = useLocalStorage("bots", []);
@@ -17,6 +18,7 @@ function App() {
           <div>
             <Routes>
               <Route element={<BotList />} path="/" />
+              <Route element={<AddBot />} path="/add" />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>
