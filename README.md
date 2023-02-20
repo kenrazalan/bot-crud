@@ -34,4 +34,9 @@ Simple Bots(CRUD) persisting to localStorage
 
 3. DiceBear Avatar library
 
+![image](https://user-images.githubusercontent.com/66010633/220213861-94d7e2fb-b1ed-4044-94ff-11cd130b0143.png)
+![image](https://user-images.githubusercontent.com/66010633/220213893-af55d869-bd79-49e5-b904-412f70630705.png)
+![image](https://user-images.githubusercontent.com/66010633/220213924-3be59f21-eca7-4496-a08c-8da6c030dcd5.png)
+
+
 
