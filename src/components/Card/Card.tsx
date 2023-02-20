@@ -6,10 +6,15 @@ import { useStyles } from "./styles";
 
 interface CardComponentProps {
   bot: Bot;
-  handleRemoveBot: (id: string) => void;
+  handleRemoveBot?: (id: string) => void;
+  hideButtons?: boolean;
 }
 
-function CardComponent({ bot, handleRemoveBot }: CardComponentProps) {
+function CardComponent({
+  bot,
+  handleRemoveBot,
+  hideButtons = false,
+}: CardComponentProps) {
   const { classes } = useStyles();
   const navigate = useNavigate();
   return (
@@ -26,14 +31,25 @@ function CardComponent({ bot, handleRemoveBot }: CardComponentProps) {
       <Text mt="sm" mb="md" color="dimmed" size="xs">
         {toTitleCase(bot.purpose)}
       </Text>
-      <Group position="apart" spacing={5}>
-        <Button onClick={() => navigate(`edit/${bot.id}`)} size="xs">
-          Edit
-        </Button>
-        <Button onClick={() => handleRemoveBot(bot.id)} size="xs" color="red">
-          Delete
-        </Button>
-      </Group>
+      {!hideButtons && (
+        <Group position="apart" spacing={5}>
+          <Button onClick={() => navigate(`view/${bot.id}`)} size="xs">
+            View
+          </Button>
+          <Button onClick={() => navigate(`edit/${bot.id}`)} size="xs">
+            Edit
+          </Button>
+          {handleRemoveBot && (
+            <Button
+              onClick={() => handleRemoveBot(bot.id)}
+              size="xs"
+              color="red"
+            >
+              Delete
+            </Button>
+          )}
+        </Group>
+      )}
     </Card>
   );
 }

@@ -7,6 +7,7 @@ import { links } from "./components/Header/styles";
 import BotsContext from "./context/BotsContext";
 import AddBot from "./pages/AddBot";
 import EditBot from "./pages/EditBot";
+import ViewBot from "./pages/ViewBot";
 
 function App() {
   const [bots, setBots] = useLocalStorage("bots", []);
@@ -20,6 +21,7 @@ function App() {
             <Route element={<BotList />} path="/" />
             <Route element={<AddBot />} path="/add" />
             <Route element={<EditBot />} path="/edit/:id" />
+            <Route element={<ViewBot />} path="/view/:id" />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BotsContext.Provider>

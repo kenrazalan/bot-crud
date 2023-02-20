@@ -4,13 +4,11 @@ import BotsContext from "../context/BotsContext";
 import { Bot } from "../types/types";
 import BotsForm from "../components/BotsForm/BotsForm";
 import { v4 as uuidv4 } from "uuid";
-import { getRandomBotName } from "../components/utils/helpers";
 
 function AddBot() {
   const { bots, setBots } = useContext(BotsContext);
   const navigate = useNavigate();
   const handleOnSubmit = (bot: Bot) => {
-    console.log(bot, "botbot");
     bot.id = uuidv4();
 
     if (bots) {
