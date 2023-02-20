@@ -5,7 +5,7 @@ import {
   Burger,
   Paper,
   Transition,
-  Text,
+  Image,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
@@ -38,7 +38,12 @@ export function HeaderComponent({ links }: HeaderResponsiveProps) {
   return (
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
       <Container className={classes.header}>
-        <Text>Logo</Text>
+        <Image
+          src={"https://api.dicebear.com/5.x/bottts/svg?seed=Fluffy"}
+          alt={"bots-logo"}
+          height={50}
+          width={50}
+        />
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>

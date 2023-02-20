@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import BotList from "./components/BotList";
+import BotList from "./pages/BotList";
 import { MantineProvider } from "@mantine/core";
 import { HeaderComponent } from "./components/Header/Header";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { links } from "./components/Header/styles";
 import BotsContext from "./context/BotsContext";
-import AddBot from "./components/AddBot";
+import AddBot from "./pages/AddBot";
 
 function App() {
   const [bots, setBots] = useLocalStorage("bots", []);
@@ -15,13 +15,11 @@ function App() {
       <BrowserRouter>
         <BotsContext.Provider value={{ bots, setBots }}>
           <HeaderComponent links={links} />
-          <div>
-            <Routes>
-              <Route element={<BotList />} path="/" />
-              <Route element={<AddBot />} path="/add" />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </div>
+          <Routes>
+            <Route element={<BotList />} path="/" />
+            <Route element={<AddBot />} path="/add" />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
         </BotsContext.Provider>
       </BrowserRouter>
     </MantineProvider>

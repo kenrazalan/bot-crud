@@ -1,6 +1,6 @@
 import { Box, Button, Group, TextInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-import { Bot } from "../types/types";
+import { Bot } from "../../types/types";
 
 interface HeaderResponsiveProps {
   handleOnSubmit: (bot: Bot) => void;
@@ -9,8 +9,10 @@ interface HeaderResponsiveProps {
 function BotsForm({ handleOnSubmit }: HeaderResponsiveProps) {
   const form = useForm({
     initialValues: {
+      id: "",
       name: "",
       purpose: "",
+      src: "",
     },
     validate: {
       name: (value) =>
